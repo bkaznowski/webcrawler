@@ -142,10 +142,10 @@ func (c *crawler) shouldVisit(site, target *url.URL) (bool, bool, error) {
 	cleanedURL := cleanUrl(*site)
 	_, isVisited := c.visited[cleanedURL]
 	c.visited[cleanedURL] = true
-	if !isVisited && len(c.visited)%100 == 0 {
+	isTargetable, err := c.isTargetable(site, target)
+	if !isVisited && isTargetable && len(c.visited)%100 == 0 {
 		log.Printf("Found %v unique sites already... last one found is %v", len(c.visited), cleanedURL)
 	}
-	isTargetable, err := c.isTargetable(site, target)
 	return isVisited, isTargetable, err
 }
 
