@@ -141,10 +141,12 @@ func (c *crawler) process(parent *url.URL) {
 func (c *crawler) shouldVisit(site, target *url.URL) (bool, bool, error) {
 	cleanedURL := cleanUrl(*site)
 	_, isVisited := c.visited[cleanedURL]
-	c.visited[cleanedURL] = true
 	isTargetable, err := c.isTargetable(site, target)
-	if !isVisited && isTargetable && len(c.visited)%100 == 0 {
-		log.Printf("Found %v unique sites already... last one found is %v", len(c.visited), cleanedURL)
+	if !isVisited && isTargetable {
+		c.visited[cleanedURL] = true
+		if len(c.visited)%100 == 0 {
+			log.Printf("Found %v unique sites already... last one found is %v", len(c.visited), cleanedURL)
+		}
 	}
 	return isVisited, isTargetable, err
 }
