@@ -21,7 +21,7 @@ while (Queue is not empty or workers are working)  is (Yes)
     endif
 endwhile (No)
 
-:Go To Sleep;
+:Print out results;
 
 stop
 
