@@ -34,7 +34,7 @@ func (*urlFinderImpl) find(site *url.URL) ([]*url.URL, error) {
 			if exists {
 				hrefURL, err := url.Parse(href)
 				if err != nil {
-					log.Printf("link not parsable \"%v\". Skipping", href)
+					log.Printf("link not parsable \"%v\". Found on %v. Skipping", href, site.String())
 					return
 				}
 				urls = append(urls, hrefURL)
