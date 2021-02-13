@@ -1,9 +1,9 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
-	"flag"
 
 	"github.com/bkaznowski/webcrawler/pkg/crawler"
 )

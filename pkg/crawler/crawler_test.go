@@ -1,8 +1,8 @@
 package crawler
 
 import (
-	"testing"
 	"net/url"
+	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -10,14 +10,14 @@ import (
 
 func TestCleanURL(t *testing.T) {
 	var tests = []struct {
-		name string
+		name     string
 		inputURL string
-		want string
+		want     string
 	}{
-		{"no changes required", "http://monzo.com","http://monzo.com"},
-		{"removes query parameters", "http://monzo.com?param=123","http://monzo.com"},
-		{"removes fragments", "http://monzo.com#fragment","http://monzo.com"},
-		{"removes query parameters and fragments", "http://monzo.com?param=123#fragment","http://monzo.com"},
+		{"no changes required", "http://monzo.com", "http://monzo.com"},
+		{"removes query parameters", "http://monzo.com?param=123", "http://monzo.com"},
+		{"removes fragments", "http://monzo.com#fragment", "http://monzo.com"},
+		{"removes query parameters and fragments", "http://monzo.com?param=123#fragment", "http://monzo.com"},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
@@ -27,7 +27,7 @@ func TestCleanURL(t *testing.T) {
 			assert.Equal(t, tc.want, cleaned)
 		})
 	}
-	
+
 }
 
 func TestCrawler(t *testing.T) {

@@ -13,7 +13,7 @@ type urlFinder interface {
 	find(*url.URL) ([]*url.URL, error)
 }
 
-type urlFinderImpl struct {}
+type urlFinderImpl struct{}
 
 func (*urlFinderImpl) find(site *url.URL) ([]*url.URL, error) {
 	response, err := http.Get(site.String())
