@@ -15,7 +15,7 @@ This output shows that `http://example.com/1` and `http://example.com/2` were fo
 
 It supports scanning with multiple goroutines. It uses a BFS algorithm to scan the site.
 
-It works as follows:
+It works as follows:  
 !["Diagram of main thread"](main_graph.png)
 !["Diagram of worker thread"](worker_graph.png)
 
