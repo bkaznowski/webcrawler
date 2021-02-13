@@ -81,7 +81,6 @@ func (c *crawler) Crawl(target string) ([]Result, error) {
 				q.Push(urlsToInterfaces(visitableChildren)...)
 			}
 			siteURL := site.(*url.URL)
-			println("Visiting " + siteURL.String())
 			c.process(siteURL)
 		} else {
 			results, visitableChildren, err := c.waitForWorker(targetURL)
