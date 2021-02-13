@@ -56,6 +56,8 @@ Usage of /tmp/go-build277890216/b001/exe/main:
 ## Further work
 * Add support for limiting
 * Add retries
+* Add support for ports (scanning example.com, example.com:81, example.com:82, etc.)
+* If a link appears more than once on a page then it is output multiple times for that page
 * Add timeouts
 * Add user-agent for easy identification of this crawler
 * Check for robots.txt file
