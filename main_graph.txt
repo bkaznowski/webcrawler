@@ -1,0 +1,28 @@
+@startuml
+
+title Main thread of the Crawl method 
+
+
+start
+:Put domain on queue;
+while (Queue is not empty or workers are working)  is (Yes)
+    :Consume from queue;
+    if (Did consume from queue?) then (yes)
+        if (Are workers available?) then (yes)
+            :Send to worker;
+        else (no)
+            :Wait for worker;
+            :Add results from worker to queue;
+            :Send to worker;
+        endif
+    else (no)
+        :Wait for worker;
+        :Add results from worker to queue;
+    endif
+endwhile (No)
+
+:Go To Sleep;
+
+stop
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+title Worker thread 
+
+
+start
+while (Channel is open)  is (Yes)
+    :Consume from channel;
+    :Go to website;
+    :Retrieve links from website;
+    :Return links to main thread;
+endwhile (No)
+stop
+
+@enduml
