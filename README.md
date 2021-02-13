@@ -13,16 +13,22 @@ http://example.com/1 [http://example.com3]
 ```
 This output shows that `http://example.com/1` and `http://example.com/2` were found on `http://example.com` and `http://example.com/3` was found on `http://example.com/1`.
 
-It supports scanning with multiple goroutines. It uses a BFS algorithm to scan the sites.
+It supports scanning with multiple goroutines. It uses a BFS algorithm to scan the site.
 
 It works as follows:
 !["Diagram of main thread"](main_graph.png)
 !["Diagram of worker thread"](worker_graph.png)
 
 ## How to use
-You can run this with:
+> This will not work until the project has been made public!
+
+First get the package with:
 ```
-go run cmd/webcrawler/main.go -target https://example.com -workers 8
+go get github.com/bkaznowski/webcrawler/cmd/webcrawler
+```
+Next run it with:
+```
+go run github.com/bkaznowski/webcrawler/cmd/webcrawler -target http://monzo.com -workers 10
 ```
 You can see these options with the `-h` flag.
 ```
