@@ -1,6 +1,8 @@
 # Web crawler written in Go
 This web crawler was written in Go 1.15.8.
 
+![Go build and test](https://github.com/bkaznowski/webcrawler/actions/workflows/go.yml/badge.svg)
+
 This program crawles a target website to find all the websites. It does not scan any other domain than the one provided. It outputs data in the following format:
 ```
 site [all space separated links found on this site]
