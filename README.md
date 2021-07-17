@@ -30,7 +30,7 @@ go get github.com/bkaznowski/webcrawler/cmd/webcrawler
 ```
 Next run it with:
 ```
-go run github.com/bkaznowski/webcrawler/cmd/webcrawler -target http://monzo.com -workers 10
+go run github.com/bkaznowski/webcrawler/cmd/webcrawler -target http://example.com -workers 10
 ```
 You can see these options with the `-h` flag.
 ```
@@ -65,9 +65,3 @@ Usage of /tmp/go-build277890216/b001/exe/main:
 * Check for robots.txt file
 * Proper automated e2e tests
 * Add support for running it on multiple websites on the same instance concurrently
-
-P.S.
-The "according to the Charities Aid Foundation" link on https://monzo.com/blog/2019/05/09/giving-to-charity is not a valid link. It points to:
-```
-http://some%20of%20you%20donate%20your%20time%20instead%20%20%20%20https//twitter.com/DesignAganova/status/1124302061145866241%20%20%20https://twitter.com/DesignAganova/status/1124302061145866241%20%20%20https://twitter.com/JonesAlexM/status/1124308849287159808%20%20%20https://twitter.com/JonesAlexM/status/1124308849287159808"
-```
