@@ -35,14 +35,14 @@ func TestCrawler(t *testing.T) {
 		mockedURLFinder := mockURLFinder{}
 
 		c := newCrawler(4, &mockedURLFinder)
-		parent := mustParseURL(t, "https://monzo.com")
+		parent := mustParseURL(t, "https://example.com")
 		parentChildren := []*url.URL{
-			mustParseURL(t, "https://monzo.com"),
-			mustParseURL(t, "https://monzo.com"),
+			mustParseURL(t, "https://example.com"),
+			mustParseURL(t, "https://example.com"),
 		}
 		mockedURLFinder.On("find", parent).Return(parentChildren, nil).Once()
 
-		results, err := c.Crawl("https://monzo.com")
+		results, err := c.Crawl("https://example.com")
 		assert.NoError(t, err)
 
 		expctedResults := []Result{
