@@ -14,10 +14,10 @@ func TestCleanURL(t *testing.T) {
 		inputURL string
 		want     string
 	}{
-		{"no changes required", "http://monzo.com", "http://monzo.com"},
-		{"removes query parameters", "http://monzo.com?param=123", "http://monzo.com"},
-		{"removes fragments", "http://monzo.com#fragment", "http://monzo.com"},
-		{"removes query parameters and fragments", "http://monzo.com?param=123#fragment", "http://monzo.com"},
+		{"no changes required", "http://example.com", "http://example.com"},
+		{"removes query parameters", "http://example.com?param=123", "http://example.com"},
+		{"removes fragments", "http://example.com#fragment", "http://example.com"},
+		{"removes query parameters and fragments", "http://example.com?param=123#fragment", "http://example.com"},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
@@ -55,14 +55,14 @@ func TestCrawler(t *testing.T) {
 		mockedURLFinder := mockURLFinder{}
 
 		c := newCrawler(4, &mockedURLFinder)
-		parent := mustParseURL(t, "https://monzo.com")
-		firstParamSite := mustParseURL(t, "https://monzo.com/params?param=1")
-		secondParamSite := mustParseURL(t, "https://monzo.com/params?param=2")
+		parent := mustParseURL(t, "https://example.com")
+		firstParamSite := mustParseURL(t, "https://example.com/params?param=1")
+		secondParamSite := mustParseURL(t, "https://example.com/params?param=2")
 		parentChildren := []*url.URL{firstParamSite, secondParamSite}
 		mockedURLFinder.On("find", parent).Return(parentChildren, nil).Once()
 		mockedURLFinder.On("find", firstParamSite).Return([]*url.URL{}, nil).Once()
 
-		results, err := c.Crawl("https://monzo.com")
+		results, err := c.Crawl("https://example.com")
 		assert.NoError(t, err)
 
 		expctedResults := []Result{
@@ -76,14 +76,14 @@ func TestCrawler(t *testing.T) {
 		mockedURLFinder := mockURLFinder{}
 
 		c := newCrawler(4, &mockedURLFinder)
-		parent := mustParseURL(t, "https://monzo.com")
-		firstParamSite := mustParseURL(t, "https://monzo.com/params#frag1")
-		secondParamSite := mustParseURL(t, "https://monzo.com/params#frag2")
+		parent := mustParseURL(t, "https://example.com")
+		firstParamSite := mustParseURL(t, "https://example.com/params#frag1")
+		secondParamSite := mustParseURL(t, "https://example.com/params#frag2")
 		parentChildren := []*url.URL{firstParamSite, secondParamSite}
 		mockedURLFinder.On("find", parent).Return(parentChildren, nil).Once()
 		mockedURLFinder.On("find", firstParamSite).Return([]*url.URL{}, nil).Once()
 
-		results, err := c.Crawl("https://monzo.com")
+		results, err := c.Crawl("https://example.com")
 		assert.NoError(t, err)
 
 		expctedResults := []Result{
@@ -97,17 +97,17 @@ func TestCrawler(t *testing.T) {
 		mockedURLFinder := mockURLFinder{}
 
 		c := newCrawler(4, &mockedURLFinder)
-		parent := mustParseURL(t, "https://monzo.com")
+		parent := mustParseURL(t, "https://example.com")
 		firstPathSite := mustParseURL(t, "/test1")
 		secondPathSite := mustParseURL(t, "/test2/test")
-		firstSite := mustParseURL(t, "https://monzo.com/test1")
-		secondSite := mustParseURL(t, "https://monzo.com/test2/test")
+		firstSite := mustParseURL(t, "https://example.com/test1")
+		secondSite := mustParseURL(t, "https://example.com/test2/test")
 		parentChildren := []*url.URL{firstPathSite, secondPathSite}
 		mockedURLFinder.On("find", parent).Return(parentChildren, nil).Once()
 		mockedURLFinder.On("find", firstSite).Return([]*url.URL{}, nil).Once()
 		mockedURLFinder.On("find", secondSite).Return([]*url.URL{}, nil).Once()
 
-		results, err := c.Crawl("https://monzo.com")
+		results, err := c.Crawl("https://example.com")
 		assert.NoError(t, err)
 
 		expctedResults := []Result{
