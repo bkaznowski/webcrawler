@@ -22,8 +22,6 @@ It works as follows:
 !["Diagram of worker thread"](worker_graph.png)
 
 ## How to use
-> This will not work until the project has been made public!
-
 First get the package with:
 ```
 go get github.com/bkaznowski/webcrawler/cmd/webcrawler
